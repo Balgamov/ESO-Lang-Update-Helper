@@ -16,7 +16,7 @@ Son güncelleme ile gelen dosyalar arasında client, pregame, lang ve diff dosya
 ## Programlar
 Yukarıda belirttiğim işlemleri gerçekleştiren her bir programın kodlamasını bu klasörde bulabilirsiniz. Kodlamalar yapay zeka yardımıyla oluşturuldu. Hangi kodun ne işe yaradığını açıklayan satırlar da mevcut.
 
-Programı buradan indirebilirsiniz.
+Programı [buradan](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases) indirebilirsiniz.
 
 
 
@@ -40,4 +40,4 @@ The files that came with the latest update include client, pregame, lang and dif
 ## Programs
 You can find the coding of each program that performs the operations I mentioned above in this folder. The codings were created with the help of AI. There are also lines explaining what each code does.
 
-You can download the program from here.
+You can download the program from [here](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases).
