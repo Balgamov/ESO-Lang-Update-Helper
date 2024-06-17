@@ -13,12 +13,20 @@ Son güncelleme ile gelen dosyalar arasında client, pregame, lang ve diff dosya
 - en.diff.txt'de belirtilmiş, güncelleme ile oyuna yeni eklenen satırları tb.lang.txt ile birleştirebilir ve sıralayabilir.
 - Client ve pregame.lua dosyalarındaki yeni eklenmiş satırları .str dosyası ile karşılaştırabilir ve eksik ya da silinmiş satırları bularak yeni dosyalara kaydedebilir
 
-## Programlar
+## Programlar Klasörü
+
 Yukarıda belirttiğim işlemleri gerçekleştiren her bir programın kodlamasını bu klasörde bulabilirsiniz. Kodlamalar yapay zeka yardımıyla oluşturuldu. Hangi kodun ne işe yaradığını açıklayan satırlar da mevcut.
 
-Programı [buradan](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases) indirebilirsiniz.
+## Kurulum
 
+- Programı [buradan](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases) indirebilirsiniz. 
+- TSOLangHelper.exe 'yi çalıştırın. Bu kadar :)
 
+## Kullanım
+
+Programı çalıştırdıktan sonra sağ tarafta bulunan Örnek düğmelerini kullanarak gerçekleştireceğiniz işlem hakkında daha detaylı bilgi edinebilirsiniz.
+
+![TSO](https://github.com/Balgamov/ESO-Lang-Update-Helper/assets/134242131/12ebe0ea-120e-439d-b221-ac49ab74691e)
 
 
 
@@ -37,7 +45,19 @@ The files that came with the latest update include client, pregame, lang and dif
 - Can combine and sort the lines specified in en.diff.txt that were newly added to the game with the update with tb.lang.txt. 
 - Can compare newly added lines in client and pregame.lua files with .str file and find missing or deleted lines and save them to new files
 
-## Programs
+## Programlar Folder
+
 You can find the coding of each program that performs the operations I mentioned above in this folder. The codings were created with the help of AI. There are also lines explaining what each code does.
 
-You can download the program from [here](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases).
+## Install
+
+- You can download the program from [here](https://github.com/Balgamov/ESO-Lang-Update-Helper/releases).
+- Run TSOLangHelper.exe. That's it :)
+
+## Usage
+
+After running the program, you can get more detailed information about the operation you will perform by using the Example buttons on the right side.
+
+![TSOEN](https://github.com/Balgamov/ESO-Lang-Update-Helper/assets/134242131/ed186e20-4340-4c2d-99d9-223961304a47)
+
+
