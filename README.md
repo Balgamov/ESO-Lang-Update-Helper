@@ -2,9 +2,8 @@
 ## The Elder Scrolls Online Dil Dosyaları Güncelleme Yardımcısı
 The Elder Scrolls Online'da oyuna eklenen, silinen veya değiştirilen satırlarda yapılması gereken değişiklikleri kolaylaştıran ve belgeleri EsoExtractData'da kullanılmak üzere hazırlayan yardımcı bir araçtır.
 
-Oyunda yeni güncelleme yayınlandığında yeni dil dosyaları ve üzerlerinde yapılan değişiklikleri görebileceğiniz belgeleri paylaşan bir site mevcut : [Unofficial Elder Scrolls Pages](https://esofiles.uesp.net/)
-
-Son güncelleme ile gelen dosyalar arasında client, pregame, lang ve diff dosyaları bulunuyor. Bu program bu dosyalarla herhangi bir text editor kullanılarak yapılması gereken işlemleri kolayca gerçekleştirebiliyor. Bu işlemler şunlar :
+## Bu programla neler yapılabiliyor ?
+Oyunda yeni güncelleme yayınlandığında yeni dil dosyaları ve üzerlerinde yapılan değişiklikleri görebileceğiniz belgeleri paylaşan bir site mevcut : [Unofficial Elder Scrolls Pages](https://esofiles.uesp.net/) Son güncelleme ile gelen dosyalar arasında client, pregame, lang ve diff dosyaları bulunuyor. Bu program bu dosyalarla herhangi bir text editor kullanılarak yapılması gereken işlemleri kolayca gerçekleştirebiliyor. Bu işlemler şunlar :
 - en.diff.txt dosyasında oyundaki eklenen,silinen ve değiştirilen satırları ayrı dosyalara ayırabilir ve ID formatını düzenleyebilir
 - en.diff.txt dosyasında "Deleted" yazılı oyundan çıkarılmış satırları tb.lang.txt ile kıyaslayarak silebilir
 - ID'si bulunmayan, çevirisi yapılmış satırların başına tekrar ID ekleyebilir
@@ -34,7 +33,7 @@ Programı çalıştırdıktan sonra sağ tarafta bulunan Örnek düğmelerini ku
 ## The Elder Scrolls Online Language Files Update Helper
 It is a helpful tool that facilitates the changes that need to be made to lines that ESO has added, deleted or changed in the game and to prepare documents for use in EsoExtractData.
 
-# What can I do with this software?
+## What can I do with this software?
 When a new update is released in the game, there is a website that shares documents where you can see the new language files and the changes made to them: [Unofficial Elder Scrolls Pages](https://esofiles.uesp.net/)
 The files that came with the latest update include client, pregame, lang and diff files. This program can easily perform operations that need to be done with these files using any text editor. These operations are as follows:
 - In the en.diff.txt file, it can separate the added, deleted and changed lines in the game into separate files and edit the ID format
