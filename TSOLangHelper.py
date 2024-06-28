@@ -10,12 +10,10 @@ import pygame
 pygame.mixer.init()
 
 # Get the directory of the current script
-def resource_path(relative_path):
-    base_path = os.path.abspath(".")
-    ss_folder_path = os.path.join(base_path, 'SS')
+def resource_path(folder, relative_path):
     if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(ss_folder_path, relative_path)
+        return os.path.join(sys._MEIPASS, folder, relative_path)
+    return os.path.join(os.path.abspath(folder), relative_path)
 
 # Python dosyasını çalıştırma fonksiyonu
 def run_python_file(file_path):
@@ -35,11 +33,11 @@ class MyApp(QWidget):
     
     def initUI(self):
         self.setWindowTitle('Turkish Scrolls Online - Güncelleme Yardımcısı by Balgamov')
-        self.setWindowIcon(QIcon(resource_path('tso.ico')))
+        self.setWindowIcon(QIcon(resource_path('SS', 'tso.ico')))
 
         # Arka plan resmi için QPalette kullan ve resmi genişlet
         palette = QPalette()
-        pixmap = QPixmap(resource_path("arka.png"))
+        pixmap = QPixmap(resource_path("SS", "arka.png"))
         scaled_pixmap = pixmap.scaled(750, 750, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
         palette.setBrush(QPalette.Background, QBrush(scaled_pixmap))
         self.setAutoFillBackground(True)
@@ -84,6 +82,7 @@ class MyApp(QWidget):
             "English": {
                 "ayirma.py": ("en.diff.txt Ayırma", "en.diff.txt dosyasında oyundaki eklenen,silinen ve değiştirilen satırları ayrı dosyalara ayırır ve ID formatını düzenler.", "ayirma.png"),
                 "karsilastirmalisilme.py": ("Deleted Silme", "en.diff.txt dosyasında silinen satırları tb.lang.txt ile kıyaslayarak siler.", "karsilassil.png"),
+                "changed.py": ("Changed Satır Değiştirme", "Oluşturulan Changed.txt dosyasını kullanımdaki lang.txt dosyası ile karşılaştırarak satırları değiştirir.", "changed.png"),
                 "idekle.py": ("ID Ekle", "ID'si bulunmayan, çevirisi yapılmış satırların başına tekrar ID eklemek için kullanılır.", "idekle.png"),
                 "Idsilme.py": ("ID Silme", "Satırların başındaki ID'leri siler.", "idsil.png"),
                 "sadeceid.py": ("Sadece ID Kaydetme", "Sadece satırların başındaki ID'leri kaydeder. Devamını siler.", "sadeceid.png"),
@@ -93,6 +92,7 @@ class MyApp(QWidget):
             "Türkçe": {
                 "ayirma.py": ("Separate en.diff.txt", "Separates the added, deleted and changed lines in the en.diff.txt file into separate files and adjusts the ID format.", "ayirmaEN.png"),
                 "karsilastirmalisilme.py": ("Remove from Original", "Compares the lines deleted in the en.diff.txt file with tb.lang.txt and deletes them.", "karsilassilEN.png"),
+                "changed.py": ("Changed Line Replacement", "Replaces lines by comparing the generated Changed.txt file with the lang.txt file in use.", "changedEN.png"),
                 "idekle.py": ("Add ID", "Used to re-add the ID to the beginning of the translated lines that do not have an ID.", "idekleEN.png"),
                 "Idsilme.py": ("Remove ID", "Deletes the IDs at the beginning of the lines.", "idsilEN.png"),
                 "sadeceid.py": ("Save Only ID", "Only saves the IDs at the beginning of the lines. Deletes the rest.", "sadeceidEN.png"),
@@ -114,7 +114,7 @@ class MyApp(QWidget):
         button_height = 35
 
         for i, (file, (title, description, image)) in enumerate(self.files[self.language].items()):
-            full_path = resource_path(os.path.join("Programlar", file))
+            full_path = resource_path("Programlar", file)
             hbox = QHBoxLayout()
 
             button = QPushButton(title, self)
@@ -138,7 +138,7 @@ class MyApp(QWidget):
             example_button.setFont(QFont('Arial', 10))
             example_button.setStyleSheet("color: darkred;")
             example_button.setFixedSize(button_width, button_height)
-            example_button.clicked.connect(lambda checked, image=resource_path(image): self.show_example(image))
+            example_button.clicked.connect(lambda checked, image=resource_path("SS", image): self.show_example(image))
             hbox.addWidget(example_button)
             self.example_buttons.append(example_button)
 
@@ -152,7 +152,7 @@ class MyApp(QWidget):
         self.play_music()
 
     def resizeEvent(self, event):
-        pixmap = QPixmap(resource_path("arka.png"))
+        pixmap = QPixmap(resource_path("SS", "arka.png"))
         scaled_pixmap = pixmap.scaled(self.size(), Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
         palette = self.palette()
         palette.setBrush(QPalette.Background, QBrush(scaled_pixmap))
@@ -173,11 +173,10 @@ class MyApp(QWidget):
 
             # Dil değiştiğinde Example penceresini güncelle
             if file in self.example_windows:
-                self.example_windows[file].update_image(resource_path(image))
+                self.example_windows[file].update_image(resource_path("SS", image))
 
     def show_example(self, image_path):
         file_name = os.path.basename(image_path)
-        file_name = os.path.join('SS', file_name)
 
         # Eğer Example penceresi zaten açıksa kapatın
         if file_name in self.example_windows:
@@ -195,7 +194,7 @@ class MyApp(QWidget):
     
 
     def play_music(self):
-        pygame.mixer.music.load(resource_path("sarki.mp3"))
+        pygame.mixer.music.load(resource_path("SS", "sarki.mp3"))
         pygame.mixer.music.play()
 
     def stop_music(self):
@@ -210,7 +209,7 @@ class Example(QWidget):
     def initUI(self, image_path):
         hbox = QVBoxLayout(self)
         pixmap_path = f"{os.path.splitext(image_path)[0]}{'' if self.language == 'English' else 'EN'}.png"
-        pixmap = QPixmap(resource_path(pixmap_path))
+        pixmap = QPixmap(resource_path("SS", pixmap_path))
 
         lbl = QLabel(self)
         lbl.setPixmap(pixmap)
@@ -224,7 +223,7 @@ class Example(QWidget):
 
     def update_image(self, image_path):
         pixmap_path = f"{os.path.splitext(image_path)[0]}{'' if self.language == 'English' else 'EN'}.png"
-        pixmap = QPixmap(resource_path(pixmap_path))
+        pixmap = QPixmap(resource_path("SS", pixmap_path))
         lbl = self.findChild(QLabel)  # Var olan QLabel'i bulun
         if lbl:
             lbl.setPixmap(pixmap)

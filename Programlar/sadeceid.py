@@ -1,20 +1,36 @@
-import tkinter as tk
-from tkinter import filedialog
 import os
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
-def extract_ids():
-    root = tk.Tk()
-    root.withdraw()
+def process_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+    
+    processed_lines = []
+    for line in lines:
+        # ID kısmını parantezlerden ve iki nokta işaretinden temizle
+        id_part = line.split(':')[0].replace('{{', '').replace('}}', '') + '\n'
+        processed_lines.append(id_part)
+    
+    # Yeni dosya adı oluşturma
+    directory = os.path.dirname(file_path)
+    new_file_path = os.path.join(directory, 'sadeceid.txt')
+    
+    with open(new_file_path, 'w', encoding='utf-8') as new_file:
+        new_file.writelines(processed_lines)
+    
+    print(f"İşlem tamamlandı. Yeni dosya: {new_file_path}")
 
-    input_file_path = filedialog.askopenfilename(title="Sadece ID'lerinin kalmasını istediğiniz .txt belgesini seçin")
-    base_name = os.path.splitext(input_file_path)[0]
-    output_file_path = base_name + "_ID.txt"
+# Tkinter kullanarak dosya seçici diyaloğu aç
+def select_file():
+    root = Tk()
+    root.withdraw()  # Tkinter penceresini gizle
+    file_path = askopenfilename(filetypes=[("Text files", "*.txt")])
+    return file_path
 
-    with open(input_file_path, 'r') as f_in, open(output_file_path, 'w') as f_out:
-        for line in f_in:
-            if line.startswith('{{') and ':' in line:
-                id = line.split(':')[0].replace('{{', '') + '\n'
-                f_out.write(id)
-
-# Kullanımı
-extract_ids()
+# Dosya seçimi
+file_path = select_file()
+if file_path:
+    process_file(file_path)
+else:
+    print("Dosya seçilmedi.")
